@@ -168,7 +168,7 @@ class Car{
 			break;
 	}
 }
-    protected void reservation() throws DateTimeParseException {
+    protected void reservation(){
 		System.out.println("You have selected :"+modelChoice.toUpperCase());
 		System.out.println("""
         1. Agreement: You need to agree to the rental company's terms, conditions, and pricing.
@@ -256,7 +256,7 @@ class Car{
 
 public class CarRentalSystem extends Customer{
 	public static void main(String args[]){
-		Customer c1=new Customer();
+		//Customer c1=new Customer();
 	    Car cars=new Car();
 		//c1.validateUser();
 		//cars.carBrand();
