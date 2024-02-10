@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Calendar;
 import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.Date;
@@ -181,13 +184,29 @@ class Car{
 		String agree=input.nextLine();
 		if(agree.equalsIgnoreCase("YES")){
 			System.out.println("\n--------------------------------------------------RESERVATION DETAILS---------------------------------------");
-			System.out.println("Enter the rental start date (YYYY/MM/DD):");
-			String startDate=input. nextLine();
 			
-			//SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            //Date date = formatter.parse(startDate);
+			try{
+			System.out.println("Enter the rental start date (DD/MM/YYYY):");
+			String startDate=input. nextLine();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			Date rentalStartDate = dateFormat.parse(startDate);
+			
 			System.out.println("Enter the rental period in days:");
-			String period=input. nextLine();
+			int period=input. nextInt();
+			Calendar calendar = Calendar.getInstance();
+            calendar.setTime(rentalStartDate);
+            calendar.add(Calendar.DAY_OF_MONTH,period);
+
+            Date rentalExpiryDate = calendar.getTime();
+			String endDate=dateFormat.format(rentalExpiryDate);
+			System.out.println("Rental expiry date: " + endDate);
+			}
+			catch(ParseException e){
+				System.out.println("Invalid date format");
+			}
+			
+			
+			
 			System.out.println("Enter the rental location:");
 			String location=input. nextLine();
 		}
@@ -239,9 +258,9 @@ public class CarRentalSystem extends Customer{
 	public static void main(String args[]){
 		Customer c1=new Customer();
 	    Car cars=new Car();
-		c1.validateUser();
-		cars.carBrand();
-		cars.carModel();
+		//c1.validateUser();
+		//cars.carBrand();
+		//cars.carModel();
 		cars.reservation();
 	}
 }
