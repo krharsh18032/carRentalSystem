@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 class Car{
 	Scanner input=new Scanner(System.in);
-	String brandChoice,modelChoice;
+	String brandChoice,modelChoice="Default";
     //String rupee = "\u20B9";
 	
 	protected void carBrand(){
@@ -169,7 +169,7 @@ class Car{
 	}
 }
     protected void reservation(){
-		System.out.println("You have selected :"+modelChoice.toUpperCase());
+		System.out.println("You have selected :"+this.modelChoice.toUpperCase());
 		System.out.println("""
         1. Agreement: You need to agree to the rental company's terms, conditions, and pricing.
         2. Reservation: You can reserve a car by providing details like the car type, rental start date and time, rental location, rental period, return location, driver's name, and any special requests.
@@ -256,11 +256,11 @@ class Car{
 
 public class CarRentalSystem extends Customer{
 	public static void main(String args[]){
-		//Customer c1=new Customer();
+		Customer c1=new Customer();
 	    Car cars=new Car();
-		//c1.validateUser();
-		//cars.carBrand();
-		//cars.carModel();
+		c1.validateUser();
+		cars.carBrand();
+		cars.carModel();
 		cars.reservation();
 	}
 }

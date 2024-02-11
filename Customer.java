@@ -49,8 +49,15 @@ public class Customer extends Thread{
             values[i] = input.nextLine();
         }
 		System.out.println("\n           ACCOUNT CREATED SUCCESSFULLY");
+		login();
 	}
 	else if(begin.equalsIgnoreCase("NO")){
+		login();
+	}
+	return true;	
+	}
+	
+	public boolean login(){
 		System.out.println("\n--------------------------------------------------Please enter your login details below:---------------------------------------");
 	do{
 		System.out.print("Username:");
@@ -80,8 +87,7 @@ public class Customer extends Thread{
 		}
 	}
 	while(!(username.equals(key) && password.equals(value)));
-	}
+	
 	return true;
 	}
-	//input.close();
 }
